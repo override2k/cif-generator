@@ -1,0 +1,29 @@
+{
+  "name": "overdesign/cif-generator",
+  "description": "Spanish CIF number generator",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Fernando Robledo",
+      "email": "overdesign@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8",
+    "ronanguilloux/isocodes": "^2.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Overdesign\\CifGenerator\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Overdesign\\CifGenerator\\Test\\": "test/"
+    }
+  },
+  "license": "MIT"
+}
