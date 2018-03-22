@@ -1,9 +1,6 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: over
- * Date: 22/03/2018
- * Time: 1:17
+ * Created by Fernando Robledo <overdesign@gmail.com>.
  */
 
 namespace Overdesign\CifGenerator;

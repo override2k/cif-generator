@@ -1,21 +1,18 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: over
- * Date: 22/03/2018
- * Time: 1:40
+ * Created by Fernando Robledo <overdesign@gmail.com>.
  */
 
 use Overdesign\CifGenerator\Generator;
 
-class Test extends PHPUnit_Framework_TestCase
+class GeneratorTest extends PHPUnit_Framework_TestCase
 {
 
     public function testCif()
     {
         for ($i = 1; $i <= 1000; $i++) {
             $cif = Generator::Cif();
-            $this->assertTrue(IsoCodes\Cif::validate($cif), sprintf('CIF: %s is valid', $cif));
+            $this->assertTrue(IsoCodes\Cif::validate($cif), sprintf('Generated CIF: %s is not valid', $cif));
         }
 
     }
@@ -26,7 +23,7 @@ class Test extends PHPUnit_Framework_TestCase
 
         for ($i = 1; $i <= 1000; $i++) {
             $cif = $cifGenerator->generateCif();
-            $this->assertTrue(IsoCodes\Cif::validate($cif), sprintf('CIF: %s is valid', $cif));
+            $this->assertTrue(IsoCodes\Cif::validate($cif), sprintf('Generated CIF: %s is not valid', $cif));
         }
     }
 }
