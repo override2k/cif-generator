@@ -5,6 +5,9 @@
 
 use Overdesign\CifGenerator\Generator;
 
+/**
+ * @covers Overdesign\CifGenerator\Generator
+ */
 class GeneratorTest extends PHPUnit_Framework_TestCase
 {
 
