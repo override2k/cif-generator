@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/override2k/cif-generator.svg?branch=master)](https://travis-ci.org/override2k/cif-generator) 
 [![codecov](https://codecov.io/gh/override2k/cif-generator/branch/master/graph/badge.svg)](https://codecov.io/gh/override2k/cif-generator)
+[![StyleCI](https://styleci.io/repos/126259233/shield?branch=master)](https://styleci.io/repos/126259233)
 
 # Spanish CIF number generator
 
