@@ -3,18 +3,18 @@
  * Created by Fernando Robledo <overdesign@gmail.com>.
  */
 
-use Overdesign\CifGenerator\Generator;
+use Overdesign\CifGenerator\Cif;
 
 /**
- * @covers Overdesign\CifGenerator\Generator
+ * @covers Overdesign\CifGenerator\Cif
  */
-class GeneratorTest extends PHPUnit_Framework_TestCase
+class CifTest extends PHPUnit_Framework_TestCase
 {
 
     public function testCif()
     {
         for ($i = 1; $i <= 1000; $i++) {
-            $cif = Generator::Cif();
+            $cif = Cif::generate();
             $this->assertTrue(IsoCodes\Cif::validate($cif), sprintf('Generated CIF: %s is not valid', $cif));
         }
 
@@ -22,10 +22,10 @@ class GeneratorTest extends PHPUnit_Framework_TestCase
 
     public function testGenerateCif()
     {
-        $cifGenerator = new Generator();
+        $cifGenerator = new Cif();
 
         for ($i = 1; $i <= 1000; $i++) {
-            $cif = $cifGenerator->generateCif();
+            $cif = $cifGenerator->get();
             $this->assertTrue(IsoCodes\Cif::validate($cif), sprintf('Generated CIF: %s is not valid', $cif));
         }
     }

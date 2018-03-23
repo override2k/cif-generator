@@ -22,9 +22,9 @@ You can generate CIF numbers in two ways:
 ```php
 <?php
 
-use Overdesign\CifGenerator\Generator;
+use Overdesign\CifGenerator\Cif;
 
-echo Generator::Cif();
+echo Cif::generate();
 ```
 
 2 - via object instance
@@ -32,10 +32,10 @@ echo Generator::Cif();
 ```php
 <?php
 
-use Overdesign\CifGenerator\Generator;
+use Overdesign\CifGenerator\Cif;
 
-$cifGenerator = new Generator();
+$cifGenerator = new Cif();
 
-echo $cifGenerator->generateCif();
+echo $cifGenerator->get();
 ```
 

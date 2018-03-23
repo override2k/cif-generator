@@ -5,6 +5,8 @@ php:
   - 7.0
   - 7.1
   - 7.2
+  - hhvm
+  - nightly
 
 before_install:
   - composer self-update
@@ -14,6 +16,7 @@ install:
   - travis_retry composer update --no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable
 
 script:
+  - ./vendor/bin/phpcs src --standard=PSR2 -n src
   - ./vendor/bin/phpunit --coverage-clover=coverage.xml
 
 after_success:

@@ -6,12 +6,12 @@
 namespace Overdesign\CifGenerator;
 
 /**
- * Class Genrator
- * @package Overdesign\CifGenerator
+ * Class Cif
  *
+ * @package Overdesign\CifGenerator
  * @see     https://es.wikipedia.org/wiki/C%C3%B3digo_de_identificaci%C3%B3n_fiscal
  */
-class Generator
+class Cif
 {
     const CHECKSUM_DIGIT_LETTER = 0;
     const CHECKSUM_DIGIT_NUMBER = 1;
@@ -97,19 +97,19 @@ class Generator
     /**
      * Generates a valid CIF number
      *
-     * @return string
+     * @return string a random CIF number
      */
-    public static function Cif()
+    public static function generate()
     {
-        return (new self)->generateCif();
+        return (new self)->get();
     }
 
     /**
      * Generates a valid CIF number
      *
-     * @return string
+     * @return string a random CIF number
      */
-    public function generateCif()
+    public function get()
     {
         $societyType = $this->getSocietyType();
         $province    = $this->getProvince();
@@ -141,7 +141,7 @@ class Generator
      */
     private function getInscriptionNumber()
     {
-        return str_pad(rand(1, 99999), 5, '0', STR_PAD_LEFT);
+        return str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
     }
 
     /**
@@ -176,11 +176,11 @@ class Generator
         if (in_array($societyType, ['A', 'B', 'E', 'H'], true)) {
             return self::CHECKSUM_DIGIT_NUMBER;
         }
-        if (in_array($societyType, ['P', 'Q', 'S', 'W'], true) || $province === '00') {
+        if ($province === '00' || in_array($societyType, ['P', 'Q', 'S', 'W'], true)) {
             return self::CHECKSUM_DIGIT_LETTER;
         }
 
-        return rand(0, 1) ? self::CHECKSUM_DIGIT_LETTER : self::CHECKSUM_DIGIT_NUMBER;
+        return mt_rand(0, 1) ? self::CHECKSUM_DIGIT_LETTER : self::CHECKSUM_DIGIT_NUMBER;
     }
 
     /**
@@ -206,7 +206,7 @@ class Generator
      *
      * @param string $digits seven digit string  (province + inscription number)
      *
-     * @return int
+     * @return int odd digits checksum
      */
     private function getOddChecksum($digits)
     {
@@ -217,5 +217,4 @@ class Generator
 
         return $checksum;
     }
-
 }
