@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ruleset name="PHPCS Default configuration">
+    <description>Check PSR-2 format compilance</description>
+    <arg name="basepath" value="."/>
+    <arg value="n"/>
+    <rule ref="PSR2"/>
+    <file>src</file>
+</ruleset>
