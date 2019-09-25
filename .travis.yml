@@ -16,7 +16,7 @@ install:
   --optimize-autoloader --prefer-stable
 script:
 - "./vendor/bin/phpcs src --standard=PSR2 -n src"
-- "./vendor/bin/phpunit --coverage-clover=coverage.xml"
+- "./vendor/bin/phpunit --coverage-clover=coverage.xml --log-junit=report.xml"
 - sonar-scanner
 after_success:
 - bash <(curl -s https://codecov.io/bash)
