@@ -1,27 +1,26 @@
 language: php
-
 php:
-  - 5.6
-  - 7.0
-  - 7.1
-  - 7.2
-  - hhvm
-  - nightly
-
+- 5.6
+- 7.0
+- 7.1
+- 7.2
+- 7.3
+- hhvm
+- nightly
 before_install:
-  - composer self-update
-  - composer clear-cache
-
+- composer self-update
+- composer clear-cache
 install:
-  - travis_retry composer update --no-interaction --no-ansi --no-progress --no-suggest --optimize-autoloader --prefer-stable
-
+- travis_retry composer update --no-interaction --no-ansi --no-progress --no-suggest
+  --optimize-autoloader --prefer-stable
 script:
-  - ./vendor/bin/phpcs src --standard=PSR2 -n src
-  - ./vendor/bin/phpunit --coverage-clover=coverage.xml
-
+- "./vendor/bin/phpcs src --standard=PSR2 -n src"
+- "./vendor/bin/phpunit --coverage-clover=coverage.xml"
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
-
+- bash <(curl -s https://codecov.io/bash)
 notifications:
   on_success: never
   on_failure: always
+env:
+  global:
+    secure: UOctxTMm4D8U0CNFyK96FA7xhYBRjJuL+RcBn0bDVrA2N8HBXfau7w9Xc1DtLqBNYJa2G0TypwiLbSxAVKf/LlxUeTKIdaWQQ3qlzQEG3110WIBdJiUzeVqnUx5bSQs1n7URi1fNgNiMxgRSWtKeP5RIqtXOzgftudMNEhpMHqXwdL1iKW2UAyrebktz5DWuEAWhKov5b4wvN2KInkUY0MR+skK8kWifYo++40l8yVv+Re3FXBt9SMlBkIschgC5UX6dvN+0Wo0EERB5ui9qjDfsOk6tHS/steJklUuV0S2eyW56jKDZNUifqGasxSBMVabRucFzhHJLl3i3+HsYGiDbruDOO4JBl97HufwKYEq1hvh1zlnA8s99mhlY5kln0Ddjzmlzw2An+o3XWRdExeY6F7+DTnxeppHDR09p7w2UGye3kGSDhsNttWrl6seELzNyBVOdLJMTkNUvXZN8OlwE29OYsZlSNZjrKCdc3PxaBpk0fRCYKb+/sg64NCaeC5iJ6TBkB4Arzowk86X2T+3tLCh5I+5I72WC6VIKhWkDSL5laFyduiQNrcuue5tLgZTPVgaJcWVLredYuLKLKSXTz6LUBQaPgnadfvC4aJ5hpp+c7mheFUTwFcDDVzdqSJxr9mPMlBYQiO9rBElZoTcI5TTIAN40/WxI/AyhteE=
