@@ -4,11 +4,12 @@
  */
 
 use Overdesign\CifGenerator\Cif;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @covers Overdesign\CifGenerator\Cif
  */
-class CifTest extends PHPUnit_Framework_TestCase
+class CifTest extends TestCase
 {
     public function testCif()
     {
