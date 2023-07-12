@@ -16,7 +16,7 @@ class Cif
     const CHECKSUM_DIGIT_LETTER = 0;
     const CHECKSUM_DIGIT_NUMBER = 1;
 
-    const SOCIETY_TYPE = [
+    public const SOCIETY_TYPE = [
         'A', //  Sociedades anónimas.
         'B', //  Sociedades de responsabilidad limitada.
         'C', //  Sociedades colectivas.
@@ -36,7 +36,7 @@ class Cif
         'W', //  Establecimientos permanentes de entidades no residentes en España
     ];
 
-    const PROVINCES = [
+    public const PROVINCES = [
         '00', //  No Residente
         '01', // Álava
         '02', // Albacete
@@ -92,14 +92,14 @@ class Cif
         '52', // Melilla
     ];
 
-    const CHECKSUM_DIGITS = 'JABCDEFGHI';
+    protected const CHECKSUM_DIGITS = 'JABCDEFGHI';
 
     /**
      * Generates a valid CIF number
      *
      * @return string a random CIF number
      */
-    public static function generate()
+    public static function generate(): string
     {
         return (new self)->get();
     }
@@ -109,7 +109,7 @@ class Cif
      *
      * @return string a random CIF number
      */
-    public function get()
+    public function get(): string
     {
         $societyType = $this->getSocietyType();
         $province    = $this->getProvince();
@@ -123,34 +123,34 @@ class Cif
     /**
      * @return string random society type digit
      */
-    private function getSocietyType()
+    private function getSocietyType(): string
     {
-        return self::SOCIETY_TYPE[array_rand(self::SOCIETY_TYPE, 1)];
+        return self::SOCIETY_TYPE[array_rand(self::SOCIETY_TYPE)];
     }
 
     /**
      * @return string random province number digit
      */
-    private function getProvince()
+    private function getProvince(): string
     {
-        return self::PROVINCES[array_rand(self::PROVINCES, 1)];
+        return self::PROVINCES[array_rand(self::PROVINCES)];
     }
 
     /**
      * @return string a random five numeric digits string
      */
-    private function getInscriptionNumber()
+    private function getInscriptionNumber(): string
     {
         return str_pad(mt_rand(1, 99999), 5, '0', STR_PAD_LEFT);
     }
 
     /**
      * @param string $digits a seven digits string (province + inscription number)
-     * @param string $digitType CHECKSUM_DIGIT_NUMBER or CHECKSUM_DIGIT_LETTER indicates the checksum digit type
+     * @param int $digitType self::CHECKSUM_DIGIT_NUMBER or self::CHECKSUM_DIGIT_LETTER indicates the checksum digit type
      *
      * @return string control digit
      */
-    private function getControlDigit($digits, $digitType)
+    private function getControlDigit(string $digits, int $digitType): string
     {
         $evenSum = $this->getEvenChecksum($digits);
         $oddSum  = $this->getOddChecksum($digits);
@@ -171,7 +171,7 @@ class Cif
      *
      * @return int with self::CHECKSUM_DIGIT_NUMBER or self::CHECKSUM_DIGIT_LETTER, indicates the checksum digit type
      */
-    private function getControlDigitType($societyType, $province)
+    private function getControlDigitType(string $societyType, string $province): int
     {
         if (in_array($societyType, ['A', 'B', 'E', 'H'], true)) {
             return self::CHECKSUM_DIGIT_NUMBER;
@@ -190,7 +190,7 @@ class Cif
      *
      * @return int even digits checksum
      */
-    private function getEvenChecksum($digits)
+    private function getEvenChecksum(string $digits): int
     {
         $checksum = 0;
         foreach (range(1, strlen($digits) - 1, 2) as $digit) {
@@ -201,14 +201,14 @@ class Cif
     }
 
     /**
-     * This checsum is calculated with the sum of all digits in odd position, multiplying them *2 and adding the last
+     * This checksum is calculated with the sum of all digits in odd position, multiplying them *2 and adding the last
      * digit of the multiplication result
      *
      * @param string $digits seven digit string  (province + inscription number)
      *
      * @return int odd digits checksum
      */
-    private function getOddChecksum($digits)
+    private function getOddChecksum(string $digits): int
     {
         $checksum = 0;
         foreach (range(0, strlen($digits) - 1, 2) as $digit) {
