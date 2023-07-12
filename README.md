@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/override2k/cif-generator.svg?branch=master)](https://travis-ci.org/override2k/cif-generator) 
 [![codecov](https://codecov.io/gh/override2k/cif-generator/branch/master/graph/badge.svg)](https://codecov.io/gh/override2k/cif-generator)
+![Scrutinizer](https://scrutinizer-ci.com/g/override2k/cif-generator/badges/quality-score.png?b=master)
 [![StyleCI](https://styleci.io/repos/126259233/shield?branch=master)](https://styleci.io/repos/126259233)
 
 # Spanish CIF number generator
@@ -16,6 +17,7 @@ composer require overdesign/cif-generator
 
 ## Usage
 
+scru
 You can generate CIF numbers in two ways:
 
 1 - via static method
